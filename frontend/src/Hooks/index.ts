@@ -11,7 +11,7 @@ export interface Blog {
   };
 }
 export function useBlog({ id }: { id: string }) {
-  const [blog, setBlog] = useState<Blog[]>();
+  const [blog, setBlog] = useState<Blog>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

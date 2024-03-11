@@ -1,26 +1,26 @@
 import { z } from 'zod';
 
-export const signupInput = z.object({
+export const SignupInput = z.object({
   email: z.string().email(),
   password: z.string(),
   name: z.string().optional(),
 });
-export type SignupInput = z.infer<typeof signupInput>;
+export type SignupInput = z.infer<typeof SignupInput>;
 
-export const signinInput = z.object({
+export const SigninInput = z.object({
     email: z.string().email(),
     password: z.string(),
 });
-export type SigninInput = z.infer<typeof signinInput>;
+export type SigninInput = z.infer<typeof SigninInput>;
 
-export const createPostInput = z.object({
+export const CreatePostInput = z.object({
   title: z.string(),
   content: z.string(),
 });
-export type CreatePostInput = z.infer<typeof createPostInput>;
+export type CreatePostInput = z.infer<typeof CreatePostInput>;
 
-export const updatePostInput = z.object({
+export const UpdatePostInput = z.object({
   title: z.string().optional(),
   content: z.string().optional(),
 });
-export type UpdatePostInput = z.infer<typeof updatePostInput>;
+export type UpdatePostInput = z.infer<typeof UpdatePostInput>;

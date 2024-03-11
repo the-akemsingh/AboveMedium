@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SignupInput } from "@akemnoorsingh/common";
+import { SignupInput } from "@akemnoorsingh/medium-project";
+
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 
@@ -82,7 +83,7 @@ function LabelledInput({ label, placeholder, onChange, type }: LabelledInputType
 
 export function Button({ onClick, type }: { onClick: () => void, type: "signup" | "signin" }) {
     return (
-            <button onClick={onClick} type="button" className="mt-8 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{type === "signup" ? "Sign up" : "Sign in"}</button>
+        <button onClick={onClick} type="button" className="mt-8 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{type === "signup" ? "Sign up" : "Sign in"}</button>
     )
 
 }

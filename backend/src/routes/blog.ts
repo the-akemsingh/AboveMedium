@@ -3,8 +3,8 @@ import { verify } from "hono/jwt";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import {
-  createPostInput,
-  updatePostInput,
+  CreatePostInput,
+  UpdatePostInput,
 } from "@akemnoorsingh/medium-project";
 
 export const bookRouter = new Hono<{
@@ -31,7 +31,9 @@ bookRouter.use("/*", async (c, next) => {
     c.status(401);
     return c.json({ error: "unauthorized" });
   }
-  c.set("userId", payload.id);
+  
+  
+  c.set("userId", String(payload.id));
   await next();
 });
 
@@ -49,7 +51,7 @@ bookRouter.post("/newblog", async (c) => {
   const userId = c.get("userId");
 
   const body = await c.req.json();
-  const { success } = createPostInput.safeParse(body);
+  const { success } = CreatePostInput.safeParse(body);
   if (!success) {
     c.status(403);
     return c.json({ error: "invalid input" });
@@ -76,7 +78,7 @@ bookRouter.put("/editblog", async (c) => {
   const userId = c.get("userId");
   const body = await c.req.json();
   const { id } = body;
-  const { success } = updatePostInput.safeParse(body);
+  const { success } = UpdatePostInput.safeParse(body);
   const prisma = c.get("jwtPayload") as PrismaClient;
 
   if (!id || typeof id !== "string") {
